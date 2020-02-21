@@ -8,7 +8,7 @@ ll mod = 10e9 + 7;
 vector<vector<int>> graph;
 ll N, K;
 ll dfs(int pos,int parent){
-    ll canUseColor = (parent != -1) ? K - 1 : K - 2;
+    ll canUseColor = (parent == -1) ? K - 1 : K - 2;
 
     if((ll)graph[pos].size() > K){
         return 0;
