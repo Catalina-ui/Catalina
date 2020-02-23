@@ -5,13 +5,12 @@ typedef long long int ll;
 ll mod = 1e9 + 7;
 
 ll pow(ll a,ll b){
-    ll ret = 1;
-    for (; b > 0;b >>= 1,a = a * a % mod){
-        if(b % 2 == 1){
-            ret = ret * a % mod;
-        }
-    }
-    return ret;
+    if(b == 0)
+        return 1;
+    ll res = pow(a * a % mod, b / 2);
+    if(b&1)
+        res = res * a % mod;
+    return res;
 }
 
 int main(){
@@ -23,14 +22,14 @@ int main(){
         c = c * (N - i) % mod;
         d = d * (i + 1) % mod;
     }
-    ans -= c * pow(d, mod - 2) % mod;
+    ans -= c * pow(d, 1e9 + 5) % mod;
     c = 1, d = 1;
     for (int i = 0; i < b;i++){
         c = c * (N - i) % mod;
         d = d * (i + 1) % mod;
     }
-    ans -= c * pow(d, mod - 2) % mod;
-    if(ans < 0)
+    ans -= c * pow(d, 1e9 + 5) % mod;
+    while(ans < 0)
         ans += mod;
     cout << ans << endl;
     return 0;
