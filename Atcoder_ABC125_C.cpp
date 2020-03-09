@@ -23,7 +23,7 @@ int main(){
         L[i + 2] = gcd(A[i + 1], L[i + 1]);
         R[N - 2 - i] = gcd(R[N - i - 1], A[N - 2 - i]);
     }
-    L[0] = R[N-1],R[N] = R[1];
+    L[0] = R[N-1],R[N] = L[1];
     rep(0,N){
         ans = max(ans, gcd(L[i], R[i + 1]));
     }
